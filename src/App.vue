@@ -1,18 +1,23 @@
 <script setup>
-// Write a program that prints one line for each number from 1 to 100
-// For multiples of three print Fizz instead of the number
-// For the multiples of five print Buzz instead of the number
-// For numbers which are multiples of both three and five print FizzBuzz instead of the number
+function renderText(number) {
+  if (number % 15 === 0) return "FizzBuzz";
+  if (number % 3 === 0) return "Fizz";
+  if (number % 5 === 0) return "Buzz";
+  return number;
+}
+function renderText2(number) {
+  let text = "";
+  if (number % 3 === 0) text += "Fizz";
+  if (number % 5 === 0) text += "Buzz";
+
+  return !text ? number : text;
+}
 </script>
 
 <template>
   <ul>
-    <li>Write a program that prints one line for each number from 1 to 100</li>
-    <li>For multiples of three print Fizz instead of the number</li>
-    <li>For the multiples of five print Buzz instead of the number</li>
-    <li>
-      For numbers which are multiples of both three and five print FizzBuzz
-      instead of the number
+    <li v-for="i in 100" :key="i">
+      {{ renderText2(i) }}
     </li>
   </ul>
 </template>
